@@ -1,0 +1,9 @@
+services:
+  camper-anal:
+    image: ghcr.io/marleixo/camper-anal:latest
+    container_name: camper-anal
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./data:/data
