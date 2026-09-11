@@ -1,0 +1,3 @@
+import { readFile } from 'node:fs/promises';
+import { extname, join } from 'node:path';
+export async function GET(_request: Request, context: { params: Promise<{ inspectionId: string; fileName: string }> }) { const { inspectionId, fileName } = await context.params; try { const file = await readFile(join(process.env.DATA_DIR ?? join(process.cwd(), 'data'), 'photos', inspectionId, fileName)); const extension = extname(fileName).toLowerCase(); const type = extension === '.png' ? 'image/png' : extension === '.webp' ? 'image/webp' : 'image/jpeg'; return new Response(file, { headers: { 'Content-Type': type } }); } catch { return new Response(null, { status: 404 }); } }

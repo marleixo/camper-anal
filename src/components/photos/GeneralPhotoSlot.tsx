@@ -1,0 +1,10 @@
+'use client';
+import { useState } from 'react';
+
+export default function GeneralPhotoSlot({ inspectionId, label, slot, initialPath }: { inspectionId: number; label: string; slot: 'camper' | 'price_board'; initialPath?: string | null }) {
+  const [path, setPath] = useState(initialPath);
+  const [error, setError] = useState('');
+  async function upload(file: File) { setError(''); try { const form = new FormData(); form.append('file', file); form.append('slot', slot); const response = await fetch(`/api/photos/${inspectionId}`, { method: 'POST', body: form }); const result = await response.json(); if (!response.ok) throw new Error(); setPath(result.filePath); } catch { setError('Photo could not be attached. You can continue without it.'); } }
+  async function remove() { if (!path) return; const response = await fetch(`/api/photos/${inspectionId}?path=${encodeURIComponent(path)}`, { method: 'DELETE' }); if (response.ok) setPath(null); }
+  return <div className="rounded-xl border border-dashed border-[var(--line)] bg-white/50 p-4"><div className="flex items-center justify-between"><span className="font-sans text-sm font-bold">{label}</span><label className="min-h-10 cursor-pointer rounded-lg border border-[var(--line)] px-3 py-2 text-sm">{path ? 'Replace' : 'Add photo'}<input className="sr-only" type="file" accept="image/*" capture="environment" onChange={(event) => { const file = event.target.files?.[0]; if (file) void upload(file); }} /></label></div>{path ? <div className="mt-3 flex items-center gap-3"><img className="h-24 w-32 rounded object-cover" src={`/api/photos/${inspectionId}/${path.split('/').pop()}`} alt={label} /><button type="button" className="text-sm text-[var(--accent-dark)]" onClick={() => void remove()}>Remove</button></div> : <p className="mt-2 text-sm text-[var(--muted)]">Optional</p>}{error && <p className="mt-2 text-sm text-[var(--accent-dark)]">{error}</p>}</div>;
+}

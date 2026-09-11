@@ -1,0 +1,2 @@
+import { getInspection, listInspections } from '@/lib/db/queries/inspections';
+export function toJson() { return JSON.stringify({ exportedAt: new Date().toISOString(), inspections: listInspections().map((inspection) => getInspection(inspection.id)) }, null, 2); }

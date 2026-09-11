@@ -1,0 +1,3 @@
+import type { ReactNode } from 'react';
+import CategorySection from './CategorySection';
+export default function DrivetrainCategory({ values, children }: { values: Record<string, unknown>; children?: ReactNode }) { return <CategorySection title="Base Vehicle & Drivetrain" noteName="notes_drivetrain" values={values} fields={[{ name: 'drivetrain_type', label: 'Drivetrain', options: ['RWD', 'FWD', '4x4'] }, { name: 'is_automatic', label: 'Automatic transmission', inputType: 'checkbox' }, { name: 'has_all_terrain_tires', label: 'All-terrain tires', inputType: 'checkbox' }, { name: 'has_cab_blackout', label: 'Cab blackout', inputType: 'checkbox' }]}>{children}</CategorySection>; }

@@ -1,0 +1,3 @@
+import type { ReactNode } from 'react';
+import CategorySection from './CategorySection';
+export default function GarageCategory({ values, children }: { values: Record<string, unknown>; children?: ReactNode }) { return <CategorySection title="Garage & External" noteName="notes_garage" values={values} fields={[{ name: 'garage_fits_motorcycle', label: 'Motorcycle fits', inputType: 'checkbox' }, { name: 'has_garage_rails', label: 'Garage L-track rails', inputType: 'checkbox' }, { name: 'has_outdoor_shower', label: 'Outdoor shower', inputType: 'checkbox' }, { name: 'has_awning_led', label: 'LED awning', inputType: 'checkbox' }]}>{children}</CategorySection>; }

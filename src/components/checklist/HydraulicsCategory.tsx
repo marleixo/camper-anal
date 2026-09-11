@@ -1,0 +1,3 @@
+import type { ReactNode } from 'react';
+import CategorySection from './CategorySection';
+export default function HydraulicsCategory({ values, children }: { values: Record<string, unknown>; children?: ReactNode }) { return <CategorySection title="Hydraulics & Water" noteName="notes_hydraulics" values={values} fields={[{ name: 'fresh_water_liters', label: 'Fresh water L', options: ['100', '120', '150', '200'] }, { name: 'grey_water_liters', label: 'Grey water L', options: ['80', '100', '120', '150'] }, { name: 'is_grey_tank_insulated', label: 'Insulated grey tank', inputType: 'checkbox' }, { name: 'has_shurflo_pump', label: 'Shurflo pump', inputType: 'checkbox' }, { name: 'has_water_filter', label: 'Water filter', inputType: 'checkbox' }]}>{children}</CategorySection>; }

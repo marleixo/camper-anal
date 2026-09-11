@@ -1,0 +1,4 @@
+import { getDatabase } from '../client';
+export function addCategoryPhoto(inspectionId: number, category: string, filePath: string) { return getDatabase().prepare('INSERT INTO category_photos (inspection_id, category, file_path, created_at) VALUES (?, ?, ?, ?)').run(inspectionId, category, filePath, new Date().toISOString()); }
+export function deleteCategoryPhoto(id: number) { return getDatabase().prepare('DELETE FROM category_photos WHERE id = ?').run(id); }
+export function listCategoryPhotos(inspectionId: number, category?: string) { return (category ? getDatabase().prepare('SELECT * FROM category_photos WHERE inspection_id = ? AND category = ?').all(inspectionId, category) : getDatabase().prepare('SELECT * FROM category_photos WHERE inspection_id = ?').all(inspectionId)) as { id: number; file_path: string; category: string }[]; }

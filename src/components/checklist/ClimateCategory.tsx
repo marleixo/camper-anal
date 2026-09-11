@@ -1,0 +1,3 @@
+import type { ReactNode } from 'react';
+import CategorySection from './CategorySection';
+export default function ClimateCategory({ values, children }: { values: Record<string, unknown>; children?: ReactNode }) { return <CategorySection title="Climate & Gas" noteName="notes_climate" values={values} fields={[{ name: 'heating_type', label: 'Heating', options: ['Truma Gas', 'Diesel Combi', 'Combi Diesel + Electric', 'Alde Gas', 'Alde Diesel'] }, { name: 'has_12v_ac', label: '12V AC', inputType: 'checkbox' }, { name: 'has_duocontrol', label: 'DuoControl', inputType: 'checkbox' }, { name: 'has_gpl_tank', label: 'GPL tank', inputType: 'checkbox' }]}>{children}</CategorySection>; }

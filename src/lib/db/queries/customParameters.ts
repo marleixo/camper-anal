@@ -1,0 +1,3 @@
+import { getDatabase } from '../client';
+export function addCustomParameter(inspectionId: number, category: string, label: string, value: string) { return getDatabase().prepare('INSERT INTO custom_parameters (inspection_id, category, label, value) VALUES (?, ?, ?, ?)').run(inspectionId, category, label, value); }
+export function deleteCustomParameter(id: number) { return getDatabase().prepare('DELETE FROM custom_parameters WHERE id = ?').run(id); }

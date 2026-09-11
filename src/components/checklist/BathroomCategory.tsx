@@ -1,0 +1,3 @@
+import type { ReactNode } from 'react';
+import CategorySection from './CategorySection';
+export default function BathroomCategory({ values, children }: { values: Record<string, unknown>; children?: ReactNode }) { return <CategorySection title="Bathroom & Sleeping" noteName="notes_bathroom" values={values} fields={[{ name: 'bathroom_type', label: 'Bathroom', options: ['Vario', 'Separated'] }, { name: 'toilet_type', label: 'Toilet', options: ['Cassette', 'Separation', 'Clesana'] }, { name: 'has_sog', label: 'SOG', inputType: 'checkbox' }, { name: 'bed_layout', label: 'Bed layout', options: ['Transversal', 'Twin', 'Drop-down'] }, { name: 'has_froli', label: 'FROLI springs', inputType: 'checkbox' }]}>{children}</CategorySection>; }

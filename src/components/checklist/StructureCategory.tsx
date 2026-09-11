@@ -1,0 +1,3 @@
+import type { ReactNode } from 'react';
+import CategorySection from './CategorySection';
+export default function StructureCategory({ values, children }: { values: Record<string, unknown>; children?: ReactNode }) { return <CategorySection title="Construction & Insulation" noteName="notes_structure" values={values} fields={['has_double_floor', 'has_flush_windows', 'has_maxxfan', 'has_air_conditioned'].map((name) => ({ name, label: ({ has_double_floor: 'Double floor', has_flush_windows: 'Flush windows', has_maxxfan: 'Maxxfan', has_air_conditioned: 'Air conditioning' } as Record<string, string>)[name], inputType: 'checkbox' as const }))}>{children}</CategorySection>; }

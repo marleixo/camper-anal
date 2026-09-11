@@ -1,0 +1,3 @@
+import type { ReactNode } from 'react';
+import CategorySection from './CategorySection';
+export default function KitchenCategory({ values, children }: { values: Record<string, unknown>; children?: ReactNode }) { return <CategorySection title="Kitchen & Living" noteName="notes_kitchen" values={values} fields={[{ name: 'fridge_type', label: 'Fridge', options: ['Compressor 12V', 'Trivalent'] }, { name: 'fridge_liters', label: 'Fridge liters', inputType: 'number' }, { name: 'has_double_hinge_door', label: 'Double-hinge door', inputType: 'checkbox' }, { name: 'has_induction_cooktop', label: 'Induction cooktop', inputType: 'checkbox' }]}>{children}</CategorySection>; }

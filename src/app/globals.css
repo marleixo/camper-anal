@@ -1,0 +1,6 @@
+@import 'tailwindcss';
+:root { --ink:#202b2a; --muted:#64716c; --paper:#f5f1e8; --panel:#fffdf7; --accent:#d85b36; --accent-dark:#a63e26; --line:#d8d4c9; --soft:#e5eee8; }
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--paper); color: var(--ink); font-family: Georgia, 'Times New Roman', serif; }
+button, input, select, textarea { font: inherit; }
+button, a { -webkit-tap-highlight-color: transparent; }

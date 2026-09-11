@@ -1,0 +1,7 @@
+import type { ReactNode } from 'react';
+
+export type CategoryField = { name: string; label: string; options?: readonly string[]; inputType?: 'number' | 'checkbox' };
+
+export default function CategorySection({ title, fields, values, noteName, children }: { title: string; fields: readonly CategoryField[]; values: Record<string, unknown>; noteName: string; children?: ReactNode }) {
+  return <section className="rounded-2xl bg-[var(--panel)] p-4 shadow-sm"><h2 className="mb-3 text-xl font-bold">{title}</h2><div className="grid gap-3 sm:grid-cols-2">{fields.map((field) => field.options ? <label key={field.name}>{field.label}<select name={field.name} defaultValue={String(values[field.name] ?? '')}><option value="">Not set</option>{field.options.map((option) => <option key={option}>{option}</option>)}</select></label> : <label key={field.name} className={field.inputType === 'checkbox' ? 'flex min-h-12 items-center gap-3 rounded-lg border border-[var(--line)] px-3' : undefined}>{field.inputType === 'checkbox' ? <input name={field.name} type="checkbox" defaultChecked={Boolean(values[field.name])} /> : <input name={field.name} type={field.inputType ?? 'text'} defaultValue={String(values[field.name] ?? '')} />}{field.label}</label>)}</div><label className="mt-3 block">Notes<textarea name={noteName} defaultValue={String(values[noteName] ?? '')} rows={3} /></label>{children}</section>;
+}
